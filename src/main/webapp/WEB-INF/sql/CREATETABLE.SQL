@@ -29,3 +29,21 @@ CREATE TABLE TUSER(
   4,001 <= 일반회원 <= 6,000
   2,001 <= 준 회 원 <= 4,000
       0 <=  손  님  <= 2,000
+      
+-------------------멀티게시판------------------------
+
+DROP TABLE BOARD;
+COMMIT;
+
+CREATE TABLE BOARD (
+
+     BNO	    NUMBER(8,0)          PRIMARY KEY
+   , MENU_ID    VARCHAR2(6)          REFERENCES MENUS (MENU_ID)
+   , TITLE   	VARCHAR2(240 BYTE)   NOT NULL
+   , CONTENT	VARCHAR2(4000 BYTE)
+   , WRITER	    VARCHAR2(12 BYTE)
+   , REGDATE	DATE                 DEFAULT SYSDATE
+   , HIT	    NUMBER(9,0)          DEFAULT 0
+   
+   );
+

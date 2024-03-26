@@ -23,7 +23,25 @@
     margin: 15px 0px;
   }
   
+ table{width: 100%;}
  
+#menu{
+	width :100%;
+	padding : 3% 2%;
+	background-color: black;
+	color:white;
+	font-weight: bold;
+	border: 1px solid silver;
+	text-align : center;
+	
+	td:hover { background-color:#C0C0C0;
+	           color: white;}
+	         
+    a{ text-decoration : none;
+       display : block;
+       width : 100%;
+       color : white; }
+}
   
   
   

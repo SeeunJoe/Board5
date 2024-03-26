@@ -29,55 +29,47 @@
    input[readonly]{
       background : #EEE;
    }
-      
-
 </style>
 </head>
 <body>
-  <main>
-	<h2>사용자 등록</h2>
-	<form action="/Users/Write" method="POST">
+  <main>  
+   <%@include file="/WEB-INF/include/menus.jsp" %>
+  
+	<h2>게시글 등록</h2>
+	<form action="/Board/Write" method="POST">
 	<table>
 	 <tr>
-	   <td>아이디</td>
-	   <td><input type="text" name="userid" /></td>
+	   <td>제목</td>
+	   <td><input type="text" name="title" /></td>
 	 </tr>
 	 <tr>
-	   <td>비밀번호</td>
-	   <td><input type="password" name="passwd" /></td>
+	   <td>메뉴</td>
+	   <td><input type="text" name="menu" /></td>
 	 </tr>
 	 <tr>
-	   <td>이름</td>
-	   <td><input type="text" name="username" /></td>
+	   <td>내용</td>
+	   <td><input type="text" name="content" /></td>
 	 </tr>
 	 <tr>
-	   <td>이메일</td>
-	   <td><input type="text" name="email" /></td>
+	   <td>작성자</td>
+	   <td><input type="text" name="regdate" /></td>
 	 </tr>
-	 <tr>
-	   <td>포인트</td>
-	   <td><input type="text" name="upoint" value="1000" readonly /></td>
-	 </tr>
-	 <tr>
-	   <td>가입일</td>
-	   <td><input type="text" name="indate" value=${ now } readonly/></td>
-	 </tr>
+
 	 <tr>
 	   <td colspan="2">
-	    <input type="submit" value="추가" />
-	    <input type="button" value="목록" id="gouserList" />
+	    <input type="submit" value="작성완료" />
+	    <input type="button" value="목록" id="goList" />
 	   </td>
-	 </tr>
-	
+	 </tr>	
 	</table>	
 	</form>   
 	
   </main>
   
   <script>
-  	const  goListEl  = document.getElementById('gouserList');
+  	const  goListEl  = document.getElementById('goList');
   	goListEl.addEventListener('click', function(e) {
-  		location.href = '/Users/List';
+  		location.href = '/Board/List';
   	})
   
   </script>
