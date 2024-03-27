@@ -32,7 +32,7 @@
 	
 	<h3>게시글</h3>
     <div><a href="/Board/List?menu_id=MENU01">게시글 목록</a></div>
-	<div><a href="/Board/WriteForm?menu_id=MENU01">게시글 등록</a></div>
+	<div><a href="/Board/WriteForm">게시글 등록</a></div>
   </main>	
 </body>
 </html>

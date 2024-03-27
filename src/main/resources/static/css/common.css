@@ -24,24 +24,27 @@
   }
   
  table{width: 100%;}
- 
-#menu{
-	width :100%;
-	padding : 3% 2%;
-	background-color: black;
-	color:white;
-	font-weight: bold;
-	border: 1px solid silver;
-	text-align : center;
+
+#menu { width :100%;
+    td{	/*padding : 3% 2%;*/
+	    background-color: black;
+      	color:white;
+    	font-weight: bold;
+     	border: 1px solid silver;
+	    text-align : center;
 	
-	td:hover { background-color:#C0C0C0;
-	           color: white;}
+	   &:hover { background-color:#C0C0C0;
+	   color: white;                       }
+       }
 	         
     a{ text-decoration : none;
        display : block;
        width : 100%;
-       color : white; }
+       color : white;
+       padding : 15px 10px; }
 }
+
+/*a태그에 width:100% 주고 padding 주면 아무 곳이나 클릭해도 링크와 연결된다.*/
   
   
   

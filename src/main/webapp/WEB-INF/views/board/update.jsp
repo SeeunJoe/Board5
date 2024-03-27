@@ -46,7 +46,7 @@
     
   <%@include file="/WEB-INF/include/menus.jsp" %>
 
-	<h2>게시글 등록</h2>
+	<h2>게시글 수정</h2>
 	<form action="/Board/Write?menu_id=MENU01" method="POST">
 	<table>
 	 <tr>
@@ -68,7 +68,7 @@
 
 	 <tr>
 	   <td colspan="2">
-	    <input type="submit" value="작성완료" />
+	    <input type="submit" value="수정완료" />
 	    <input type="button" value="목록" id="goList" />
 	   </td>
 	 </tr>	

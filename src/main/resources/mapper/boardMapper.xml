@@ -10,10 +10,37 @@
 </select>
 
 <insert id="insert">
-   INSERT INTO BOARD( BNO,MENU_ID,TITLE,CONTENT,WRITER,REGDATE,HIT)
-   VALUES(SELECT NVL(MAX(BNO),0)+1 FROM BOARD
-          '#{menu_id}, #{title}, #{content}, #{writer}, #{regdate}, #{hit})
+   INSERT INTO BOARD( BNO,MENU_ID,TITLE,CONTENT,WRITER)
+   VALUES( SELECT NVL(MAX(BNO),0)+1 FROM BOARD ,
+          #{menu_id}, #{title}, #{content}, #{writer} )
 </insert>
+
+<select id="getBoard">
+   SELECT BNO,MENU_ID,TITLE,WRITER,TO_CHAR(REGDATE,'YY-MM-DD') REGDATE,HIT,CONTENT
+   FROM   BOARD
+   WHERE  BNO=#{bno}
+</select>
+
+<update id="incHit">
+   UPDATE BOARD
+   SET    HIT = HIT + 1
+   WHERE  BNO = #{bno}
+</update>
+
+<delete id="delete">
+   DELETE 
+   FROM BOARD
+   WHERE BNO=#{bno}
+</delete>
+
+<update id="update">
+   UPDATE BOARD
+   SET    TITLE   =#{title},
+          MENU_ID =#{menu_id},
+          CONTENT =#{content},
+          WRITER  =#{writer}
+   WHERE  MENU_ID =#{menu_id}
+</update>
 
 
 </mapper>

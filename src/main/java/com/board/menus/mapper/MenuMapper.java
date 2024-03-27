@@ -27,6 +27,8 @@ public interface MenuMapper {
 
 	MenuVo getMenu( String menu_id);
 
+	String getMenu_id();
+
 
 
 }

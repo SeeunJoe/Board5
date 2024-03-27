@@ -42,11 +42,11 @@
      text-align : right;
   }
   
-  td:nth-of-type(1){width:80px;}
-  td:nth-of-type(2){width:340px; text-align:left;}
-  td:nth-of-type(3){width:100px;}
-  td:nth-of-type(4){width:120px;}
-  td:nth-of-type(5){width:80px;}
+  td:nth-of-type(1){width:100px;}
+  td:nth-of-type(2){width:380px; text-align:left;}
+  td:nth-of-type(3){width:110px;}
+  td:nth-of-type(4){width:110px;}
+  td:nth-of-type(5){width:100px;}
   
   tr:first-of-type >td {text-align:center;}
   }
@@ -54,9 +54,9 @@
 
 </head>
 <body>
-	<main>  
-	<%@include file="/WEB-INF/include/menus.jsp" %>  
-	  
+	<main>   
+	
+	<%@include file="/WEB-INF/include/menus.jsp" %> 
 	  <h2>게시글 목록</h2>
 	  <table id="board">
 	    <tr>
@@ -68,7 +68,7 @@
 	    </tr>
 	    <tr>
 	      <td colspan="5">
-	        [<a href="/Board/WriteForm">새 글 추가</a>]
+	        [<a href="/Board/WriteForm?menu_id=${menu_id }">새 글 추가</a>]
 	      </td> 
 	    </tr>
 	    

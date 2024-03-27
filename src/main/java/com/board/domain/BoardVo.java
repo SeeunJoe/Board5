@@ -9,14 +9,13 @@ import lombok.NonNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardVo {
-	@NonNull
 	private int    bno;
-	private String menu_id;
-	@NonNull
 	private String title;
+	private String menu_id;
 	private String content;
 	private String writer;
 	private String regdate;
 	private int    hit;
+
 
 }

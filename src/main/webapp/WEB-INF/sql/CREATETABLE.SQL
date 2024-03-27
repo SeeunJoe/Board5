@@ -46,4 +46,9 @@ CREATE TABLE BOARD (
    , HIT	    NUMBER(9,0)          DEFAULT 0
    
    );
+   
+         --client에게 받아온 정보 db에 저장--
+   INSERT INTO BOARD( BNO,MENU_ID,TITLE,CONTENT,WRITER,REGDATE,HIT)
+   VALUES( ( SELECT NVL(MAX(BNO),0)+1 FROM BOARD ),
+          '#{menu_id}, #{title}, #{content}, #{writer}, #{regdate}, #{hit})
 

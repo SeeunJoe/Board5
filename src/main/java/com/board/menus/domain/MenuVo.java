@@ -7,9 +7,9 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
+@ToString
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class MenuVo {
@@ -18,5 +18,7 @@ public class MenuVo {
 	private  String  menu_id;	
 	private  String  menu_name;
 	private  int     menu_seq;
+
+
 		
 }
