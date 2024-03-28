@@ -11,8 +11,6 @@ public interface BoardMapper {
 
 	List<BoardVo> getBoardList(MenuVo menuVo);
 
-	void insert(BoardVo boardVo);
-
 	BoardVo getBoard(BoardVo boardVo);
 
 	void incHit(BoardVo boardVo);
@@ -20,5 +18,8 @@ public interface BoardMapper {
 	void delete(BoardVo boardVo);
 
 	void update(BoardVo boardVo);
+
+	void insert(BoardVo boardVo);
+
 
 }

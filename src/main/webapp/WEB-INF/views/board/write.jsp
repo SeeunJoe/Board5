@@ -47,23 +47,21 @@
   <%@include file="/WEB-INF/include/menus.jsp" %>
 
 	<h2>게시글 등록</h2>
-	<form action="/Board/Write?menu_id=MENU01" method="POST">
+	<form action="/Board/Write" method="POST">
+	<input type="hidden" name="menu_id" value="${menu_id}" } />
 	<table>
+
 	 <tr>
 	   <td>제목</td>
 	   <td><input type="text" name="title" /></td>
 	 </tr>
 	 <tr>
-	   <td>메뉴</td>
-	   <td><input type="text" name="menu" /></td>
-	 </tr>
-	 <tr>
 	   <td>내용</td>
-	   <td><input type="text" name="content" id="content"/></td>
+	   <td><textarea name="content" id="content"/></textarea></td>
 	 </tr>
 	 <tr>
 	   <td>작성자</td>
-	   <td><input type="text" name="regdate" /></td>
+	   <td><input type="text" name="writer" /></td>
 	 </tr>
 
 	 <tr>
@@ -87,8 +85,3 @@
   
 </body>
 </html>
-
-
-
-
-

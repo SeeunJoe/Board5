@@ -28,29 +28,37 @@ public class BoardController {
 	@Autowired
 	private MenuMapper menuMapper;
 	
+	//public ModelAndView list(String menu_id) 원래 이걸로 해야하는데 
+	//MenuVo안에 menu_id존재하므로 MenuVo menuVo로 받아도 된다.
+	//public ModelAndViw list(@Param String menu_id)이걸로 해도 됨
+	//BoardVo 안에도 menu_id가 존재하므로->BoardVo boardVo로 받아도 된다.
+	
 	//  /Board/List?menu_id=MENU01
 	@RequestMapping("/List") 
 	public ModelAndView list(MenuVo menuVo){
-	//public ModelAndViw list(@Param String menu_id)이걸로 해도 됨
 	//String menu_id는 위에 List?뒤의 menu_id
 	
-		log.info("menuVo:{}",menuVo);
+		log.info("==================menuVo:{}",menuVo);
 		
-		//메뉴 목록 - 위에 띄울 메뉴 받아온다
+		//메뉴 목록 - 상단바 메뉴 받아온다
 		List<MenuVo> menuList = menuMapper.getMenuList();
-		
+	
 		//게시글 목록
 		List<BoardVo> boardList = boardMapper.getBoardList(menuVo);
+		System.out.println(boardList);
 		//param 쓰면 이거 안써도 됨 -> list에 여기서 사용하기 위해서
 		// [<a href="/Board/WriteForm?menu_id=#{@param.menu_id }">새 글 추가</a>]
 		// menuMapper에서 menu_id불러옴
 		
+		MenuVo mVo = menuMapper.getMenu(menuVo.getMenu_id());
 		String menu_id = menuVo.getMenu_id();
+		String menu_name = menuVo.getMenu_name();
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("menuList", menuList);
 		mv.addObject("boardList", boardList);
 		mv.addObject("menu_id",menu_id);
+		mv.addObject("menu_name", menu_name);
 		
 		mv.setViewName("board/list");
 		return mv;
@@ -86,14 +94,18 @@ public class BoardController {
 		
 	}*/
 	@RequestMapping("/Write")
-	public ModelAndView write(BoardVo boardVo) {
+	public  ModelAndView   write( BoardVo boardVo  )   {
+		System.out.println("boardVo : " + boardVo );
+		//넘어온 값을 boardVo에 저장
 		boardMapper.insert(boardVo);
+				
+		String        menu_id =  boardVo.getMenu_id();
 		
-		String menu_id = boardVo.getMenu_id();
+		ModelAndView  mv      =  new ModelAndView();
+		mv.setViewName("redirect:/Board/List?menu_id=" + menu_id);
+		//mv.setViewName("/Board/List?menu_id=MENU03");
+		return        mv;
 		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/Board/List?menu_id=MENU01");
-		return mv;
 	}
 
 	@RequestMapping("/View")
@@ -144,7 +156,7 @@ public class BoardController {
    mv.addObject("menuList",menuList);
 
 	*/
-	@RequestMapping("/Delete")
+/*	@RequestMapping("/Delete")
 	public String delete(BoardVo boardVo,Model model) {
 		//상단 메뉴바
 		List<MenuVo> menuList = menuMapper.getMenuList();
@@ -153,9 +165,31 @@ public class BoardController {
 		boardMapper.delete(boardVo);
 		
 		return "redirect:/Board/List?menu_id=MENU01";
+	}  */
+	
+	@RequestMapping("Delete")
+	public ModelAndView delete(BoardVo boardVo) {
+		//게시글 삭제
+		boardMapper.delete(boardVo);
+		
+		String menu_id = boardVo.getMenu_id();
+		
+		//다시 조회
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/Board/List?menu_id="+menu_id);
+		return mv;
 	}
-	@RequestMapping("/UpdateForm")
-	public String updateForm() {
+	
+	//  /Board/UpdateForm?menu_id=${menu.menu_id}
+/*	@RequestMapping("/UpdateForm")
+	public String updateForm(BoardVo boardVo,Model model) {
+	//	System.out.println("boardVo :"+boardVo);
+		String menu_id=boardVo.getMenu_id();
+		
+	//  수정할 데이터를 menu_id기준으로 조회
+	    BoardVo bv = boardVo.getMenu(menu_id);
+		
+		model.addAttribute("menu_id", bv);
 		
 		return "board/update";
 	}
@@ -165,8 +199,7 @@ public class BoardController {
 		//상단 메뉴바
 		List<MenuVo> menuList = menuMapper.getMenuList();
 		model.addAttribute("menuList", menuList);
-		
-		
+	
 		
 		boardMapper.update(boardVo);
 		
@@ -174,5 +207,5 @@ public class BoardController {
 		
 	}
 	
-
+*/
 }
