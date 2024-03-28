@@ -102,7 +102,7 @@
 	      <a class="btn btn-secondary btn-sm" role="button" 
 	         href="/Board/WriteForm?menu_id=${vo.menu_id }" >글 작성</a>
 	      <a class="btn btn-secondary btn-sm" role="button"
-	         href="/Board/Update?bno=${ vo.bno }&menu_id=${vo.menu_id}" >글 수정</a>
+	         href="/Board/UpdateForm?bno=${ vo.bno }&menu_id=${vo.menu_id}" >글 수정</a>
 	      <a class="btn btn-outline-danger btn-sm" role="button" 
 	         href="/Board/Delete?menu_id=${ vo.menu_id }&bno=${vo.bno}" >글 삭제</a>
 	      <a class="btn btn-secondary btn-sm" role="button" 

@@ -57,7 +57,7 @@
 	<main>   
 	
 	<%@include file="/WEB-INF/include/menus.jsp" %> 
-	 <h2>게시글 목록</h2>
+	 <h2>${menu_name}게시글 목록</h2>
 	  <table id="board">
 	    <tr>
 	      <td>번호</td>
@@ -75,7 +75,7 @@
 	    <c:forEach  var="boardVo"  items="${ boardList }" >
 	    <tr>
 	      <td>${ boardVo.bno     }</td>
-	      <td><a href="/Board/View?bno=${boardVo.bno}">
+	      <td><a href="/Board/View?bno=${boardVo.bno}">   <!-- &menu_id=${boardVo.menu_id}넣어도 되고 안넣어도 된다.select하면 알아서 가지고 옴 -->
 	          ${ boardVo.title   }</a></td>	           
 	      <td>${ boardVo.writer  }</td>	  
 	      <td>${ boardVo.regdate }</td>	  

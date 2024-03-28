@@ -21,5 +21,4 @@ public interface BoardMapper {
 
 	void insert(BoardVo boardVo);
 
-
 }

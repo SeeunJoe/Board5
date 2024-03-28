@@ -35,11 +35,9 @@
 
 <update id="update">
    UPDATE BOARD
-   SET    TITLE   =#{title},
-          MENU_ID =#{menu_id},
-          CONTENT =#{content},
-          WRITER  =#{writer}
-   WHERE  MENU_ID =#{menu_id}
+   SET    TITLE   = #{title},
+          CONTENT = #{content}
+   WHERE  BNO =#{bno}
 </update>
 
 

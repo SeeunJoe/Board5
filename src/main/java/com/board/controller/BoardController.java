@@ -107,7 +107,7 @@ public class BoardController {
 		return        mv;
 		
 	}
-
+    // /Board/View?
 	@RequestMapping("/View")
 	public ModelAndView view(BoardVo boardVo) {
 		
@@ -181,20 +181,38 @@ public class BoardController {
 	}
 	
 	//  /Board/UpdateForm?menu_id=${menu.menu_id}
-/*	@RequestMapping("/UpdateForm")
-	public String updateForm(BoardVo boardVo,Model model) {
-	//	System.out.println("boardVo :"+boardVo);
-		String menu_id=boardVo.getMenu_id();
-		
-	//  수정할 데이터를 menu_id기준으로 조회
-	    BoardVo bv = boardVo.getMenu(menu_id);
-		
-		model.addAttribute("menu_id", bv);
-		
-		return "board/update";
-	}
 	
-	@RequestMapping("/Update")
+	
+/*	public ModelAndView updateForm(int bno, String menu_id) {
+		//bno를 중심으로 정보 가져온다.
+		BoardVo boardVo = new BoardVo();
+		boardVo.setBno(bno);
+		
+		BoardVo vo = boardMapper.getBoard( bno );
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("vo",vo );
+		mv.setViewName("/board/update"); //update.jsp
+		
+		return mv;
+	}                      ▼                              */
+	@RequestMapping("/UpdateForm")
+	public ModelAndView updateForm(BoardVo boardVo){
+		
+		List<MenuVo> menuList = menuMapper.getMenuList();
+		
+		
+		BoardVo vo = boardMapper.getBoard(boardVo);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("vo",vo );
+		mv.setViewName("/board/update");
+		mv.addObject("menuList", menuList);
+		
+		return mv;		
+		
+	}
+/*	@RequestMapping("/Update")
 	public String update(BoardVo boardVo, Model model) {
 		//상단 메뉴바
 		List<MenuVo> menuList = menuMapper.getMenuList();
@@ -205,7 +223,17 @@ public class BoardController {
 		
 		return "redirect:/Board/List?menu_id=MENU01";
 		
+	}  */
+	@RequestMapping("/Update")
+	public ModelAndView update(BoardVo boardVo) {
+		String menu_id = boardVo.getMenu_id();
+		
+		boardMapper.update(boardVo);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/Board/List?menu_id="+menu_id);
+		return mv;
 	}
 	
-*/
+
 }

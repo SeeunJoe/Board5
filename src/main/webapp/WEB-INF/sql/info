@@ -1,0 +1,12 @@
+파라미터  Controller       model
+   ->     HomeController    ->     home.jsp
+ menu_id                   menu_id
+ 
+ /Menu
+   /List   ->  MenuController -> MenuMapper.java -> menuMapper.xml ->  list.jsp
+   /Write  ->  MenuController -> MenuMapper.java -> menuMapper.xml ->  write.jsp
+   /Write2 ->  MenuController -> MenuMapper.java -> menuMapper.xml ->  write2.jsp
+   /update ->  MenuController -> MenuMapper.java -> menuMapper.xml ->  update.jsp
+   
+ /Users
+   /
